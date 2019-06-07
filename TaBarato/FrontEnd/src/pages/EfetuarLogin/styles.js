@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   productButton: {
     height: 42,
     borderRadius: 5,
-    backgroundColor: "#fff",
+    backgroundColor: "#7fffd4",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 15,
