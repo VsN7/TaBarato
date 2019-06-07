@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   form: {
-    backgroundColor: "#FF6347",
+    backgroundColor: "#7FFFD4",
     flex: 1,
     padding: 20,
     paddingTop: 70
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   productButtonText: {
     fontSize: 16,
-    color: "#FF6347",
+    color: "#7FFFD4",
     fontWeight: "bold"
   }
 });

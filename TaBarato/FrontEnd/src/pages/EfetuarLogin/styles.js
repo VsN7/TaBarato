@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   form: {
-    backgroundColor: "#FF6347",
+    backgroundColor: "#7FFFD4",
     flex: 1,
     padding: 20,
     paddingTop: 70
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   productButton: {
     height: 42,
     borderRadius: 5,
-    backgroundColor: "#7fffd4",
+    backgroundColor: "#7FFFD4",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 15,
