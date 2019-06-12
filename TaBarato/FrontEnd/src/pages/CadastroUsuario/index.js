@@ -37,7 +37,7 @@ export default class CadastroUsuario extends Component {
 
         <TextInput
           style={styles.inputText}
-          placeholder="Telefone"
+          placeholder="Apelido"
           placeholderTextColor="#999"
           autoCapitalize="none"
           autoCorrect={false}
