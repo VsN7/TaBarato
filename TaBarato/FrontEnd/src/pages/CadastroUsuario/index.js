@@ -7,13 +7,13 @@ import styles from "./styles";
 export default class CadastroUsuario extends Component {
   state = {
     nome: "",
-    telefone: ""
+    apelido: ""
   };
 
   handleSubmit = async () => {
     const response = await api.post("products", {
       nome: this.state.nome,
-      telefone: this.state.telefone
+      apelido: this.state.apelido
     });
 
     this.props.navigation.navigate("Home");
