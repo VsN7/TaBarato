@@ -13,8 +13,13 @@ const ProductSchema = new mongoose.Schema({
   local: {
     type: String,
     required: true,
-  }
+  },
+  data: {
+    type: Date,
+    required: true,
+  },
 });
+
 
 ProductSchema.plugin(mongoosePaginate);
 

@@ -6,16 +6,14 @@ import styles from "./styles";
 
 export default class CadastroUsuario extends Component {
   state = {
-    nome: "",
-    telefone: ""
+    nome_usuario: "",
   };
 
   handleSubmit = async () => {
-    const response = await api.post("products", {
-      nome: this.state.nome,
-      telefone: this.state.telefone
+    const response = await api.post("users", {
+      nome_usuario: this.state.nome_usuario
     });
-
+  alert("sucesso")
     this.props.navigation.navigate("Home");
   };
 
@@ -26,26 +24,14 @@ export default class CadastroUsuario extends Component {
       <View style={styles.form}>
         <TextInput
           style={styles.inputText}
-          placeholder="Nome"
+          placeholder="Nome de usuario"
           placeholderTextColor="#999"
           autoCapitalize="none"
           autoCorrect={false}
           underlineColorAndroid="transparent"
-          value={this.state.nome}
-          onChangeText={text => this.setState({ nome: text })}
+          value={this.state.nome_usuario}
+          onChangeText={text => this.setState({ nome_usuario: text })}
         />
-
-        <TextInput
-          style={styles.inputText}
-          placeholder="Telefone"
-          placeholderTextColor="#999"
-          autoCapitalize="none"
-          autoCorrect={false}
-          underlineColorAndroid="transparent"
-          value={this.state.telefone}
-          onChangeText={text => this.setState({ telefone: text })}
-        />
-
         <TouchableOpacity
           style={styles.productButton}
           onPress={this.handleSubmit}
