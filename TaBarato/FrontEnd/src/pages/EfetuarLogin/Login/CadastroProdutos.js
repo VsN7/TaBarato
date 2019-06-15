@@ -67,6 +67,14 @@ export default class CadastroProduto extends Component {
         >
           <Text style={styles.productButtonText}>Salvar</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.productButton}
+          onPress={() => {
+            this.props.navigation.navigate("Camera");
+          }}
+        >
+          <Text style={styles.productButtonText}>Foto</Text>
+        </TouchableOpacity>
       </View>
     );
   }

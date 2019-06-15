@@ -9,6 +9,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Inicio from "./pages/inicio";
 import CadastroUsuario from "./pages/CadastroUsuario";
 import EfetuarLogin from  "./pages/EfetuarLogin/Login/routes"
+import Camera from "./camera/camera"
 
 
 const defaultStyle = title => {
@@ -33,6 +34,10 @@ const TabStackNavigator = createStackNavigator(
     EfetuarLogin: {
       screen: EfetuarLogin,
       navigationOptions: () => defaultStyle("")
+    },
+    Camera: {
+      screen: Camera,
+      navigationOptions: () => defaultStyle("Tire sua foto")
     }
   }
 )
