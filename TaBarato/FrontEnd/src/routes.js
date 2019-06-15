@@ -10,6 +10,7 @@ import Inicio from "./pages/inicio";
 import CadastroUsuario from "./pages/CadastroUsuario";
 import EfetuarLogin from  "./pages/EfetuarLogin/Login/routes"
 import Camera from "./camera/camera"
+import Login from "./pages/EfetuarLogin/Login/login"
 
 
 const defaultStyle = title => {
@@ -30,6 +31,10 @@ const TabStackNavigator = createStackNavigator(
     CadastroUsuario: {
       screen: CadastroUsuario,
       navigationOptions: () => defaultStyle("Cadastro de Usuario")
+    },
+    Login: {
+      screen: Login,
+      navigationOptions: () => defaultStyle("Efetuar Autenticação")
     },
     EfetuarLogin: {
       screen: EfetuarLogin,

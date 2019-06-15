@@ -28,7 +28,7 @@ export default class Home extends Component {
         <TouchableOpacity
         style={styles.navegavores}
         onPress={() => {
-          this.props.navigation.navigate("EfetuarLogin");
+          this.props.navigation.navigate("Login");
         }}
       >
         <Text style={styles.textNavegadores} >LOGIN</Text>

@@ -1,23 +1,15 @@
 import React, { Component } from "react";
 import { Text, View, TouchableOpacity, TextInput } from "react-native";
 
-import api from "../../services/api";
-import styles from "./styles";
+import api from "../../../services/api";
+import styles from "./estilo/styles";
+import Home from "./home";
 
-export default class CadastroUsuario extends Component {
-  state = {
-    login: "",
-    senha: ""
-  };
-
-  handleSubmit = async () => {
-    const response = await api.post("users", {
-      login: this.state.login,
-      senha: this.state.senha
-    });
-  alert("Cadastro realizado com sucesso!!")
-    this.props.navigation.navigate("Inicio");
-  };
+export default class CadastroProduto extends Component {
+    state = {
+      login: "",
+      senha: ""
+    };
 
   render(props) {
     console.log(this.props);
@@ -34,6 +26,7 @@ export default class CadastroUsuario extends Component {
           value={this.state.login}
           onChangeText={text => this.setState({ login: text })}
         />
+
         <TextInput
           style={styles.inputText}
           placeholder="Senha"
@@ -44,11 +37,14 @@ export default class CadastroUsuario extends Component {
           value={this.state.senha}
           onChangeText={text => this.setState({ senha: text })}
         />
+
         <TouchableOpacity
           style={styles.productButton}
-          onPress={this.handleSubmit}
+          onPress={() => {
+            this.props.navigation.navigate("EfetuarLogin");
+          }}
         >
-          <Text style={styles.productButtonText}>Salvar</Text>
+          <Text style={styles.productButtonText}>Acessar</Text>
         </TouchableOpacity>
       </View>
     );
