@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   form: {
-    backgroundColor: "#7FFFD4",
+    
     flex: 1,
     padding: 20,
     paddingTop: 70

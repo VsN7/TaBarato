@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, TouchableOpacity, TextInput } from "react-native";
+import { Text, View, TouchableOpacity, TextInput, ImageBackground } from "react-native";
 
 import api from "../../services/api";
 import styles from "./styles";
@@ -23,6 +23,7 @@ export default class CadastroUsuario extends Component {
     console.log(this.props);
 
     return (
+      <ImageBackground  source={require('../../../backgrounds/1.jpg')} style={ { width : '100%' , height : '100%' } }>    
       <View style={styles.form}>
         <TextInput
           style={styles.inputText}
@@ -42,8 +43,8 @@ export default class CadastroUsuario extends Component {
           autoCapitalize="none"
           autoCorrect={false}
           underlineColorAndroid="transparent"
-          value={this.state.telefone}
-          onChangeText={text => this.setState({ telefone: text })}
+          value={this.state.apelido}
+          onChangeText={text => this.setState({ apelido: text })}
         />
 
         <TouchableOpacity
@@ -53,6 +54,7 @@ export default class CadastroUsuario extends Component {
           <Text style={styles.productButtonText}>Salvar</Text>
         </TouchableOpacity>
       </View>
+      </ImageBackground>
     );
   }
 }

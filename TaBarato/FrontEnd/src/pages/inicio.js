@@ -7,14 +7,16 @@ import {
   StyleSheet,
   Button,
   Alert,
-  TouchableHighlight
+  TouchableHighlight,
+  ImageBackground
 } from "react-native";
 
 export default class Home extends Component {
   render() {
     return (
+      <ImageBackground  source={require('../../backgrounds/2.jpg')} style={ { width : '100%' , height : '100%' } }>    
       <View style={styles.container}>
-
+      
         {<TouchableOpacity
           style={styles.navegavores}
           onPress={() => {
@@ -33,7 +35,9 @@ export default class Home extends Component {
       >
         <Text style={styles.textNavegadores} >LOGIN</Text>
       </TouchableOpacity>
+      
       </View>
+      </ImageBackground>
     );
   }
 }
@@ -41,8 +45,8 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#FF6347'
+    justifyContent: 'center'
+   
   },
 
   navegavores: {
