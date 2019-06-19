@@ -7,7 +7,7 @@ import {
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import Home from "./home";
-import CadastroLinks from "./CadastroProdutos";
+import CadastroProdutos from "./CadastroProdutos";
 
 
 
@@ -28,9 +28,9 @@ const HomeStack = createStackNavigator({
   }
 });
 
-const CadastroLinksStack = createStackNavigator({
-  CadastroLinks: {
-    screen: CadastroLinks,
+const CadastroProdutosStack = createStackNavigator({
+  CadastroProdutos: {
+    screen: CadastroProdutos,
     navigationOptions: () => defaultStyle("Cadastro de Produtos")
   }
 });
@@ -38,8 +38,8 @@ const CadastroLinksStack = createStackNavigator({
 const TabStackNavigator = createBottomTabNavigator(
   {
     Home: { screen: HomeStack },
-    CadastroLinks: {
-      screen: CadastroLinksStack,
+    CadastroProdutos: {
+      screen: CadastroProdutosStack,
       navigationOptions: () => ({
         title: "Cadastrar Produto"
       })
@@ -53,7 +53,7 @@ const TabStackNavigator = createBottomTabNavigator(
         if (routeName === "Home") {
           iconName = `home${focused ? "" : "-outline"}`;
           // iconName = `ios-home`;
-        } else if (routeName === "CadastroLinks") {
+        } else if (routeName === "CadastroProdutos") {
           iconName = `link${focused ? "-off" : ""}`;
         }
         return <Icon name={iconName} size={18} color={tintColor} />;

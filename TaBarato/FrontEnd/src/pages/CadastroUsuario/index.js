@@ -7,7 +7,27 @@ import styles from "./styles";
 export default class CadastroUsuario extends Component {
   state = {
     login: "",
-    senha: ""
+    senha: "",
+    user: ""
+  };
+
+  verifica = async () => {
+    try{
+    const login = this.state.login;
+    const response = await api.get(`/users/${login}`);
+    this.setState({
+      user: response.data.login
+    })
+    const user = this.state.user
+    if(login===user){
+      alert("Cadastro ja existente")
+    }else{
+      alert("Cadastro não existente")
+      // this.handleSubmit();
+    }}catch(e){
+      this.handleSubmit()
+    }
+    
   };
 
   handleSubmit = async () => {
@@ -35,6 +55,7 @@ export default class CadastroUsuario extends Component {
           onChangeText={text => this.setState({ login: text })}
         />
         <TextInput
+          secureTextEntry={true}
           style={styles.inputText}
           placeholder="Senha"
           placeholderTextColor="#999"
@@ -46,7 +67,8 @@ export default class CadastroUsuario extends Component {
         />
         <TouchableOpacity
           style={styles.productButton}
-          onPress={this.handleSubmit}
+          onPress={ 
+            this.verifica}
         >
           <Text style={styles.productButtonText}>Salvar</Text>
         </TouchableOpacity>

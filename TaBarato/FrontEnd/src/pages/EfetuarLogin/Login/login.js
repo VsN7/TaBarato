@@ -8,8 +8,42 @@ import Home from "./home";
 export default class CadastroProduto extends Component {
     state = {
       login: "",
-      senha: ""
+      senha: "",
+      user: "",
+      ssenha: ""
     };
+
+
+    
+    verifica = async () => {
+      
+      const login = this.state.login;
+      const senha = this.state.senha;
+      // alert(login)
+      
+      try{
+      const response = await api.get(`/users/${login}`);
+      this.setState({
+        user: response.data.login,
+        ssenha: response.data.senha
+      })
+      const user = this.state.user
+      const ssenha = this.state.ssenha
+
+      if(user == login && ssenha == senha){
+        alert("Bem Vindo "+user)
+        this.props.navigation.navigate("Home", user);
+        this.props.navigation.navigate("EfetuarLogin", user);
+      }else{
+        alert("Senha incorreta!!!")
+      }
+
+    }catch(e){
+      alert("Login incorreto!!")
+    }
+
+    };
+    
 
   render(props) {
     console.log(this.props);
@@ -28,6 +62,7 @@ export default class CadastroProduto extends Component {
         />
 
         <TextInput
+          secureTextEntry={true}
           style={styles.inputText}
           placeholder="Senha"
           placeholderTextColor="#999"
@@ -40,9 +75,10 @@ export default class CadastroProduto extends Component {
 
         <TouchableOpacity
           style={styles.productButton}
-          onPress={() => {
-            this.props.navigation.navigate("EfetuarLogin");
-          }}
+          onPress={
+            this.verifica
+            
+          }
         >
           <Text style={styles.productButtonText}>Acessar</Text>
         </TouchableOpacity>

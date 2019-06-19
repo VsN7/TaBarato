@@ -14,6 +14,5 @@ routes.delete('/products/:id', ProductController.destroy);
 
 
 routes.post('/users', UserController.store)
-routes.get('/users/:id', UserController.show);
-routes.post('/users', UserController.store);
+routes.get('/users/:login', UserController.verificar);
 module.exports = routes;
