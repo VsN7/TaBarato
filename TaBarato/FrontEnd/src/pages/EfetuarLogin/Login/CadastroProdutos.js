@@ -12,11 +12,18 @@ export default class CadastroProduto extends Component {
     local: ""
   };
 
+
+  recuperaUser = () =>{
+    const user = this.props.navigation.getParam("usuario","user");
+    return user;
+  }
+
   handleSubmit = async () => {
     const response = await api.post("products", {
       produto: this.state.produto,
       valor: this.state.valor,
       local: this.state.local,
+      user: this.recuperaUser()
     });
     
     this.props.navigation.navigate("Home");

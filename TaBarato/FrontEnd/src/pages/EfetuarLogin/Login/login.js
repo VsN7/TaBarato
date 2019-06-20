@@ -32,8 +32,8 @@ export default class CadastroProduto extends Component {
 
       if(user == login && ssenha == senha){
         alert("Bem Vindo "+user)
-        this.props.navigation.navigate("Home", user);
-        this.props.navigation.navigate("EfetuarLogin", user);
+        this.props.navigation.navigate("Home", {usuario:user});
+        this.props.navigation.navigate("RotasHomeProduto");
       }else{
         alert("Senha incorreta!!!")
       }

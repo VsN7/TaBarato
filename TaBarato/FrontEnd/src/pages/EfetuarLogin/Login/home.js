@@ -15,6 +15,12 @@ import api from "../../../services/api";
 const path = "/products";
 
 export default class Home extends Component {
+
+  constructor(props){
+    super(props);
+  }
+
+
   state = {
     productInfo: {},
     docs: [],
@@ -24,6 +30,13 @@ export default class Home extends Component {
   componentDidMount() {
     this.loadLinks();
   }
+
+
+  recuperaUser = () =>{
+    const user = this.props.navigation.getParam("usuario","user");
+    return user;
+  }
+
 
   loadLinks = async (page = 1) => {
     try {
@@ -43,6 +56,7 @@ export default class Home extends Component {
   alerta(){
     alert("xtra");
   }
+  
 
   loadMore = () => {
     const { page, productInfo } = this.state;
@@ -57,6 +71,12 @@ export default class Home extends Component {
   renderItem = ({ item }) => {
     return (
       <View style={styles.productContainer}>
+       <TouchableOpacity style={styles.buttonExcluir} onPress={ ()=>{
+
+        this.props.navigation.navigate("CadastroProdutos", {usuario:this.recuperaUser()})
+
+       }}
+        ><Text style={styles.textDelete}>C</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonExcluir} onPress={
           
           excluirI = async (id) => {
@@ -84,9 +104,11 @@ export default class Home extends Component {
           }
 
           }>
+            
           <Text style={styles.textDelete}>X</Text></TouchableOpacity> 
+        <Text style={styles.productTitle}>Postado por {item.user}</Text>
         <Text style={styles.productTitle}>{item.produto}</Text>
-        <Text style={styles.productDescription}>{item.valor}</Text>
+        <Text style={styles.productDescription}>R$ {item.valor}</Text>
         <Text style={styles.productButtonText}>{item.local}</Text>
       </View>
     );

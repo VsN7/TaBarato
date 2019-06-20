@@ -13,7 +13,12 @@ const ProductSchema = new mongoose.Schema({
   local: {
     type: String,
     required: true,
-  },createdAt: {
+  },
+  user: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
     type: Date,
     default: Date.now
   }
