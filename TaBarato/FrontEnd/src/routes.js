@@ -8,9 +8,11 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import Inicio from "./pages/inicio";
 import CadastroUsuario from "./pages/CadastroUsuario";
-import EfetuarLogin from  "./pages/EfetuarLogin/Login/routes"
 import Camera from "./camera/camera"
 import Login from "./pages/EfetuarLogin/Login/login"
+import CadastroProdutos from "./pages/EfetuarLogin/Login/CadastroProdutos"
+import Home from "./pages/EfetuarLogin/Login/home"
+import RotasHomeProduto from "./pages/EfetuarLogin/Login/routes"
 
 
 const defaultStyle = title => {
@@ -22,12 +24,19 @@ const defaultStyle = title => {
     headerTintColor: '#FFF',
   };
 };
-
 const TabStackNavigator = createStackNavigator(
   {
-    Inicio: { screen: Inicio,
-      navigationOptions: () => defaultStyle("TaBarato") },
-    
+    Inicio: { 
+      screen: Inicio,
+      navigationOptions: () => defaultStyle("TaBarato") 
+    },Home: {
+      screen: Home,
+      navigationOptions: () => defaultStyle("Home")
+    },
+    CadastroProdutos: {
+      screen: CadastroProdutos, 
+      navigationOptions: () => defaultStyle("Cadastro de Produtos")
+    },
     CadastroUsuario: {
       screen: CadastroUsuario,
       navigationOptions: () => defaultStyle("Cadastro de Usuario")
@@ -36,14 +45,11 @@ const TabStackNavigator = createStackNavigator(
       screen: Login,
       navigationOptions: () => defaultStyle("Efetuar Autenticação")
     },
-    EfetuarLogin: {
-      screen: EfetuarLogin,
-      navigationOptions: () => defaultStyle("")
-    },
     Camera: {
       screen: Camera,
       navigationOptions: () => defaultStyle("Tire sua foto")
     }
   }
 )
+const i = 0;
 export default createAppContainer(TabStackNavigator);
