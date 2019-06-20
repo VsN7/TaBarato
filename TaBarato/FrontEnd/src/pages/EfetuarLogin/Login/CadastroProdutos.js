@@ -4,13 +4,12 @@ import { Text, View, TouchableOpacity, TextInput } from "react-native";
 import api from "../../../services/api";
 import styles from "./estilo/styles";
 import Home from "./home";
-
 export default class CadastroProduto extends Component {
   state = {
     produto: "",
     valor: "",
     local: ""
-  };
+  }; 
 
 
   recuperaUser = () =>{
@@ -25,7 +24,6 @@ export default class CadastroProduto extends Component {
       local: this.state.local,
       user: this.recuperaUser()
     });
-    
     this.props.navigation.navigate("Home");
     
 

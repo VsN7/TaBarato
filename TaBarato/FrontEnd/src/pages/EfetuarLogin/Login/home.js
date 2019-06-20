@@ -10,12 +10,12 @@ import {
   TouchableHighlight
 } from "react-native";
 import Moment from 'moment';
-import api from "../../../services/api";
+import api from "../../../services/api"; 
 
 const path = "/products";
 
 export default class Home extends Component {
-
+  
   constructor(props){
     super(props);
   }
@@ -37,8 +37,8 @@ export default class Home extends Component {
     return user;
   }
 
-
-  loadLinks = async (page = 1) => {
+  
+   loadLinks = async (page = 1) => {
     try {
       const response = await api.get(`/products?page=${page}`);
 
@@ -53,10 +53,6 @@ export default class Home extends Component {
       console.log(error);
     }
   };
-  alerta(){
-    alert("xtra");
-  }
-  
 
   loadMore = () => {
     const { page, productInfo } = this.state;
@@ -75,7 +71,7 @@ export default class Home extends Component {
        <TouchableOpacity style={styles.buttonExcluir} onPress={ ()=>{
 
         this.props.navigation.navigate("CadastroProdutos", {usuario:this.recuperaUser()})
-
+        this.loadLinks
        }}
         ><Text style={styles.textDelete}>C</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonExcluir} onPress={
