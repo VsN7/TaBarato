@@ -9,7 +9,7 @@ import {
   Alert,
   TouchableHighlight
 } from "react-native";
-
+import Moment from 'moment';
 import api from "../../../services/api";
 
 const path = "/products";
@@ -69,6 +69,7 @@ export default class Home extends Component {
   };
 
   renderItem = ({ item }) => {
+    Moment.locale('en');
     return (
       <View style={styles.productContainer}>
        <TouchableOpacity style={styles.buttonExcluir} onPress={ ()=>{
@@ -110,6 +111,7 @@ export default class Home extends Component {
         <Text style={styles.productTitle}>{item.produto}</Text>
         <Text style={styles.productDescription}>R$ {item.valor}</Text>
         <Text style={styles.productButtonText}>{item.local}</Text>
+        <Text style={styles.productDescription}>Data da publicação: {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}</Text>
       </View>
     );
   };
