@@ -5,8 +5,47 @@ const styles = StyleSheet.create({
     backgroundColor: "#FF6347",
     flex: 1,
     padding: 20,
+    paddingBottom: 0,
     paddingTop: 70
   },
+  form2: {
+    backgroundColor: "#FF6347",
+    flex: 1,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 0,
+    paddingTop: 50
+  },
+
+  divBotoes: {
+    marginTop: 10,
+    flexDirection: "row"
+  },
+
+  textDelete:{
+    color: "#fff",
+    textAlign: 'center'
+  },
+
+  productContainer2: {
+    
+    
+    width: 120,
+    marginLeft: 7,
+    marginRight: 40,
+    borderRadius: 20,
+    padding: 10,
+    marginTop: 28,
+    
+    borderColor: "white",
+    borderWidth: 3,
+    shadowColor: "#000",
+    shadowOffset: { width: 30, height: 5 },
+    shadowOpacity: 0.4,
+    shadowRadius: 5,
+    elevation: 2
+  },
+
   inputText: {
     height: 42,
     backgroundColor: "#fff",
