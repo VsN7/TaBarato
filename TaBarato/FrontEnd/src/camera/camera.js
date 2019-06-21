@@ -4,12 +4,14 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { RNCamera } from "react-native-camera";
 
 export default class App extends Component {
+
   takePicture = async () => {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
-
-      alert(data.uri);
+        var source = data;
+        
+        this.props.navigation.navigate("CadastroProdutos", {Uri:source});
     }
   };
 

@@ -26,6 +26,15 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: 'center'
   },
+  imagem: {
+    flex: 1,
+    padding: 100,
+    width: 310,
+     height: 200,
+    margin:10,
+    backgroundColor: "black"
+
+  },
 
   productContainer2: {
     

@@ -5,10 +5,8 @@ import {
   FlatList,
   TouchableOpacity,
   StyleSheet,
-  Button,
-  Alert,
- 
-  TouchableHighlight
+  Image,
+  Alert
 } from "react-native";
 import Moment from 'moment';
 import api from "../../../services/api"; 
@@ -104,6 +102,13 @@ export default class Home extends Component {
         <Text style={styles.textDelete}><Icon name="trash" size={28} color="red" /></Text></TouchableOpacity>
          
         <Text style={styles.productTitle}>Postado por {item.user}</Text>
+        <Image 
+          style = {{
+            width: 280,
+            height: 200,
+            resizeMode: "cover"
+          }}        
+        source = {{uri: 'data:imagem/jpg;base64,' + item.imagem}}/>
         <Text style={styles.productTitle}>{item.produto}</Text>
         <Text style={styles.productDescription}>R$ {item.valor}</Text>
         <Text style={styles.productButtonText}>{item.local}</Text>
