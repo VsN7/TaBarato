@@ -7,10 +7,13 @@ import {
   StyleSheet,
   Button,
   Alert,
+ 
   TouchableHighlight
 } from "react-native";
 import Moment from 'moment';
 import api from "../../../services/api"; 
+
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const path = "/products";
 
@@ -30,7 +33,6 @@ export default class Home extends Component {
   componentDidMount() {
     this.loadLinks();
   }
-
 
   recuperaUser = () =>{
     const user = this.props.navigation.getParam("usuario","user");
@@ -67,13 +69,9 @@ export default class Home extends Component {
   renderItem = ({ item }) => {
     Moment.locale('en');
     return (
+    
       <View style={styles.productContainer}>
-       <TouchableOpacity style={styles.buttonExcluir} onPress={ ()=>{
 
-        this.props.navigation.navigate("CadastroProdutos", {usuario:this.recuperaUser()})
-        this.loadLinks
-       }}
-        ><Text style={styles.textDelete}>C</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonExcluir} onPress={
           
           excluirI = async (id) => {
@@ -102,19 +100,23 @@ export default class Home extends Component {
 
           }>
             
-          <Text style={styles.textDelete}>X</Text></TouchableOpacity> 
+        <Text style={styles.textDelete}><Icon name="trash" size={28} color="red" /></Text></TouchableOpacity> 
         <Text style={styles.productTitle}>Postado por {item.user}</Text>
         <Text style={styles.productTitle}>{item.produto}</Text>
         <Text style={styles.productDescription}>R$ {item.valor}</Text>
         <Text style={styles.productButtonText}>{item.local}</Text>
         <Text style={styles.productDescription}>Data da publicação: {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}</Text>
       </View>
+   
     );
   };
 
+ 
+
   render() {
     return (
-      <View style={styles.container}>
+      
+       <View style={styles.container}>
         {/* <TouchableHighlight
           onPress={() => {
             this.props.navigation.navigate("CadastroLinks");
@@ -123,6 +125,8 @@ export default class Home extends Component {
         >
           <Text>Cadastrar Links</Text>
         </TouchableHighlight> */}
+         
+
         <FlatList
           contentContainerStyle={styles.list}
           data={this.state.docs}
@@ -132,16 +136,45 @@ export default class Home extends Component {
           renderItem={this.renderItem}
           onEndReached={this.loadMore}
           onEndReachedThreshold={0.1}
+          
         />
+        <View style={styles.divBotoes} >
+          <TouchableOpacity style={styles.productContainer2} onPress={ ()=>{
+
+          this.props.navigation.navigate("Home", {usuario:this.recuperaUser()})
+          
+          }}>
+          <Text style={styles.textDelete}><Icon name="home" size={28} color="white" /></Text>
+          <Text style={styles.textDelete}>Home</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.productContainer2} onPress={ ()=>{
+
+           this.props.navigation.navigate("CadastroProdutos", {usuario:this.recuperaUser()})
+
+          }}>
+          <Text style={styles.textDelete}><Icon name="paper-plane" size={28} color="white" /></Text>
+          <Text style={styles.textDelete}>Novo Post</Text>
+          </TouchableOpacity>
+          
+        </View>
       </View>
+      
     );
   }
 }
+
+
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FF6347'
+  },
+  divBotoes: {
+    marginTop: 10,
+    flexDirection: "row"
   },
   list: {
     padding: 20
@@ -158,6 +191,25 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 2
   },
+
+  productContainer2: {
+    
+    
+    width: 120,
+    marginLeft: 28,
+    marginRight: 35,
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 10,
+    borderColor: "white",
+    borderWidth: 3,
+    shadowColor: "#000",
+    shadowOffset: { width: 30, height: 5 },
+    shadowOpacity: 0.4,
+    shadowRadius: 5,
+    elevation: 2
+  },
+
   productTitle: {
     fontSize: 18,
     fontWeight: "bold",
@@ -165,14 +217,17 @@ const styles = StyleSheet.create({
   },
 
   buttonExcluir:{
-    backgroundColor: "red",
+    backgroundColor: "white",
     marginLeft: "94%"
   },
   textDelete:{
     color: "#fff",
     textAlign: 'center'
   },
-
+  add:{
+    color: "#0000CD",
+    textAlign: 'center'
+  },
   productDescription: {
     fontSize: 16,
     color: "#999",
