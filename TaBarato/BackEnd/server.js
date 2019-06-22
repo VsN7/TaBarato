@@ -10,7 +10,7 @@ app.use(cors())
 
 mongoose
   .connect(
-      'mongodb+srv://vitor:533596vsn@cluster0-mmqlk.mongodb.net/test?retryWrites=true&w=majority',
+      'mongodb+srv://eduardo:ryer@cluster0-uygvn.mongodb.net/tabarato?retryWrites=true&w=majority',
     //'mongodb+srv://vitor:533596vsn@cluster0-mmqlk.mongodb.net/test?retryWrites=true&w=majority',
     // 'mongodb+srv://<USUARIO>:<SENHA>@cluster0-plxve.mongodb.net/node-api?retryWrites=true',
     {

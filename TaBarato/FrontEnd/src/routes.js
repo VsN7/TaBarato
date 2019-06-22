@@ -17,11 +17,8 @@ import RotasHomeProduto from "./pages/EfetuarLogin/Login/routes"
 
 const defaultStyle = title => {
   return {
-    title,
-    headerStyle: {
-      backgroundColor: "#FF6347",
-    },
-    headerTintColor: '#FFF',
+    
+    header: null
   };
 };
 const TabStackNavigator = createStackNavigator(
