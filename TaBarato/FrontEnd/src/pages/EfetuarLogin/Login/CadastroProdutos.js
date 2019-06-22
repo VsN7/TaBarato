@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, TouchableOpacity, TextInput } from "react-native";
+import { Text, View, TouchableOpacity, TextInput, Image } from "react-native";
 
 import api from "../../../services/api";
 import styles from "./estilo/styles";
@@ -7,11 +7,13 @@ import Home from "./home";
 
 import Icon from "react-native-vector-icons/FontAwesome";
 
+const home = new Home();
 export default class CadastroProduto extends Component {
   state = {
     produto: "",
     valor: "",
-    local: ""
+    local: "",
+    imagem: ""
   }; 
 
 
@@ -25,18 +27,37 @@ export default class CadastroProduto extends Component {
       produto: this.state.produto,
       valor: this.state.valor,
       local: this.state.local,
+      imagem: this.state.imagem,
       user: this.recuperaUser()
     });
+    home.render();
     this.props.navigation.navigate("Home");
+    
+    
     
 
   };
 
+
   render(props) {
     console.log(this.props);
+    var arquivo = this.props.navigation.getParam('Uri', 'Imagem');
+  
+    this.state.imagem = arquivo.base64;
 
     return (
       <View style={styles.form2}>
+
+              <TouchableOpacity
+                
+                onPress={() => {
+                this.props.navigation.navigate("Camera");                
+                }} >
+                 <Image
+                       source={{uri:arquivo.uri}} 
+                       style={styles.imagem} /> 
+
+              </TouchableOpacity>
         <TextInput
           style={styles.inputText}
           placeholder="Produto"
@@ -71,18 +92,14 @@ export default class CadastroProduto extends Component {
 
         <TouchableOpacity
           style={styles.productButton}
-          onPress={this.handleSubmit}
+          onPress={ ()=>{
+              this.handleSubmit();
+          }
+        }
         >
           <Text style={styles.productButtonText}>Salvar</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.productButton}
-          onPress={() => {
-            this.props.navigation.navigate("Camera");
-          }}
-        >
-          <Text style={styles.productButtonText}>Foto</Text>
-        </TouchableOpacity>
+        
       
        <View style={styles.divBotoes} >
           <TouchableOpacity style={styles.productContainer2} onPress={ ()=>{

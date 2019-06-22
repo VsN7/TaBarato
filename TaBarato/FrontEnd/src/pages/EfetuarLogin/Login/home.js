@@ -5,10 +5,8 @@ import {
   FlatList,
   TouchableOpacity,
   StyleSheet,
-  Button,
-  Alert,
- 
-  TouchableHighlight
+  Image,
+  Alert
 } from "react-native";
 import Moment from 'moment';
 import api from "../../../services/api"; 
@@ -16,7 +14,6 @@ import api from "../../../services/api";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const path = "/products";
-
 export default class Home extends Component {
   
   constructor(props){
@@ -31,7 +28,7 @@ export default class Home extends Component {
   };
 
   componentDidMount() {
-    this.loadLinks();
+    this.loadProdutos();
   }
 
   recuperaUser = () =>{
@@ -40,12 +37,12 @@ export default class Home extends Component {
   }
 
   
-   loadLinks = async (page = 1) => {
+   loadProdutos = async (page = 1) => {
     try {
+      
       const response = await api.get(`/products?page=${page}`);
-
+      
       const { docs, ...productInfo } = response.data;
-
       this.setState({
         docs: [...this.state.docs, ...docs],
         productInfo,
@@ -63,16 +60,18 @@ export default class Home extends Component {
 
     const pageNumber = page + 1;
     
-    this.loadLinks(pageNumber);
+    this.loadProdutos(pageNumber);
   };
+  
 
   renderItem = ({ item }) => {
     Moment.locale('en');
+    if(this.recuperaUser()==item.user){
     return (
     
       <View style={styles.productContainer}>
-
-        <TouchableOpacity style={styles.buttonExcluir} onPress={
+       
+       <TouchableOpacity style={styles.buttonExcluir} onPress={
           
           excluirI = async (id) => {
             id = item._id;
@@ -90,7 +89,7 @@ export default class Home extends Component {
                   onPress: async () => {
                     await api.delete(`/products/${id}`)
                     this.setState({docs: [] })
-                    this.loadLinks()
+                    this.loadProdutos()
                   }
                 },
               ],
@@ -100,8 +99,16 @@ export default class Home extends Component {
 
           }>
             
-        <Text style={styles.textDelete}><Icon name="trash" size={28} color="red" /></Text></TouchableOpacity> 
+        <Text style={styles.textDelete}><Icon name="trash" size={28} color="red" /></Text></TouchableOpacity>
+         
         <Text style={styles.productTitle}>Postado por {item.user}</Text>
+        <Image 
+          style = {{
+            width: 280,
+            height: 200,
+            resizeMode: "cover"
+          }}        
+        source = {{uri: 'data:imagem/jpg;base64,' + item.imagem}}/>
         <Text style={styles.productTitle}>{item.produto}</Text>
         <Text style={styles.productDescription}>R$ {item.valor}</Text>
         <Text style={styles.productButtonText}>{item.local}</Text>
@@ -109,6 +116,15 @@ export default class Home extends Component {
       </View>
    
     );
+  }else{
+      return  <View style={styles.productContainer}>
+                <Text style={styles.productTitle}>Postado por {item.user}</Text>
+                <Text style={styles.productTitle}>{item.produto}</Text>
+                <Text style={styles.productDescription}>R$ {item.valor}</Text>
+                <Text style={styles.productButtonText}>{item.local}</Text>
+                <Text style={styles.productDescription}>Data da publicação: {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}</Text>
+              </View>
+    }
   };
 
  
@@ -149,7 +165,7 @@ export default class Home extends Component {
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.productContainer2} onPress={ ()=>{
-
+           
            this.props.navigation.navigate("CadastroProdutos", {usuario:this.recuperaUser()})
 
           }}>
@@ -162,6 +178,7 @@ export default class Home extends Component {
       
     );
   }
+  
 }
 
 

@@ -18,6 +18,10 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imagem: {
+    type: String,
+    required: true,
+  },
   data: {
     type: Date,
     default: Date.now
