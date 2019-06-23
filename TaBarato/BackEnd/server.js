@@ -10,7 +10,7 @@ app.use(cors())
 
 mongoose
   .connect(
-      'mongodb+srv://eduardo:ryer@cluster0-uygvn.mongodb.net/tabarato?retryWrites=true&w=majority',
+       process.env.MONGO_URL, //variavel de ambiente
     //'mongodb+srv://vitor:533596vsn@cluster0-mmqlk.mongodb.net/test?retryWrites=true&w=majority',
     // 'mongodb+srv://<USUARIO>:<SENHA>@cluster0-plxve.mongodb.net/node-api?retryWrites=true',
     {
@@ -24,4 +24,4 @@ requireDir('./src/models');
 // Rotas
 app.use('/api', require('./src/routes'));
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);

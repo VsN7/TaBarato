@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://192.168.0.105:3000/api'
+  baseURL: 'http://servertabarato.herokuapp.com/api'//ja ta on no heroku
 });
 
 export default api;
+
