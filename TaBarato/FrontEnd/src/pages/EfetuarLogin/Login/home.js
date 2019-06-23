@@ -6,12 +6,14 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  Alert
+  Alert,
+  ImageBackground
 } from "react-native";
 import Moment from 'moment';
 import api from "../../../services/api"; 
+import Icon from "react-native-vector-icons/FontAwesome";//FontAwesome
+import background from '../../../background/6.jpg';
 
-import Icon from "react-native-vector-icons/FontAwesome";
 
 const path = "/products";
 export default class Home extends Component {
@@ -68,7 +70,7 @@ export default class Home extends Component {
     Moment.locale('en');
     if(this.recuperaUser()==item.user){
     return (
-    
+     
       <View style={styles.productContainer}>
        
        <TouchableOpacity style={styles.buttonExcluir} onPress={
@@ -110,19 +112,30 @@ export default class Home extends Component {
           }}        
         source = {{uri: 'data:imagem/jpg;base64,' + item.imagem}}/>
         <Text style={styles.productTitle}>{item.produto}</Text>
-        <Text style={styles.productDescription}>R$ {item.valor}</Text>
-        <Text style={styles.productButtonText}>{item.local}</Text>
-        <Text style={styles.productDescription}>Data da publicação: {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}</Text>
+        <Text style={styles.productTitle}>R$ {item.valor}</Text>
+        <Text style={styles.productTitle}>{item.local}</Text>
+        <Text style={styles.productTitle}>Data da publicação: {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}</Text>
       </View>
-   
+      
     );
   }else{
       return  <View style={styles.productContainer}>
-                <Text style={styles.productTitle}>Postado por {item.user}</Text>
-                <Text style={styles.productTitle}>{item.produto}</Text>
-                <Text style={styles.productDescription}>R$ {item.valor}</Text>
-                <Text style={styles.productButtonText}>{item.local}</Text>
-                <Text style={styles.productDescription}>Data da publicação: {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}</Text>
+                <Text style={styles.productTitle}>
+                  <Text style={styles.textDelete}><Icon name="user" size={18} color="white" />  </Text> {item.user}
+                </Text>
+                <Text style={styles.productTitle}>
+                  <Text style={styles.textDelete}><Icon name="shopping-cart" size={18} color="white" />  </Text>{item.produto}
+                </Text>
+                <Text style={styles.productTitle}>
+                  <Text style={styles.textDelete}><Icon name="dollar" size={18} color="white" />  </Text>{item.valor}
+                </Text>
+                <Text style={styles.productTitle}>
+                  <Text style={styles.textDelete}><Icon name="map-marker" size={18} color="white" />  </Text> {item.local}
+                </Text>
+                <Text style={styles.productTitle}>
+                <Text style={styles.textDelete}><Icon name="calendar" size={18} color="white" />  </Text>
+                 {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}
+                 </Text>
               </View>
     }
   };
@@ -131,18 +144,9 @@ export default class Home extends Component {
 
   render() {
     return (
-      
+      <ImageBackground source={background} style={ { width : '100%' , height : '100%' } }>
        <View style={styles.container}>
-        {/* <TouchableHighlight
-          onPress={() => {
-            this.props.navigation.navigate("CadastroLinks");
-          }}
-          underlayColor="white"
-        >
-          <Text>Cadastrar Links</Text>
-        </TouchableHighlight> */}
-         
-
+       
         <FlatList
           contentContainerStyle={styles.list}
           data={this.state.docs}
@@ -176,6 +180,7 @@ export default class Home extends Component {
         </View>
       </View>
       
+      </ImageBackground>
     );
   }
   
@@ -187,7 +192,9 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FF6347'
+    justifyContent: "center",
+    alignItems: "center",
+    
   },
   divBotoes: {
     marginTop: 10,
@@ -197,16 +204,16 @@ const styles = StyleSheet.create({
     padding: 20
   },
   productContainer: {
-    backgroundColor: "#FFF",
-    borderRadius: 5,
-    padding: 20,
-    marginBottom: 20,
-
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.4,
-    shadowRadius: 5,
-    elevation: 2
+    padding: 10,
+    height: 180,
+    width: 300,
+    fontSize: 16,
+    backgroundColor: "rgba(255, 255, 255, 0.3)",
+    borderColor: 'rgba(255, 255, 255, 0.7)',
+    borderWidth: 3,
+    borderRadius: 25,
+    marginBottom: 25,
+    
   },
 
   productContainer2: {

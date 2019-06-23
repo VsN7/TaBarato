@@ -10,7 +10,7 @@ const styles2 = StyleSheet.create({
   
   botaum: {
     backgroundColor: "#4B0082",
-    marginTop: 30,
+    marginTop: 50,
     justifyContent: 'center',
     borderRadius: 25,
     height: 50,
