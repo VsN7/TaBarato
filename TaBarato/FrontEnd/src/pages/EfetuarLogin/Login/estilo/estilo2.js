@@ -18,6 +18,43 @@ const styles2 = StyleSheet.create({
    
   },
 
+  botaumPostar: {
+    backgroundColor: "#008000",
+    marginTop: 20,
+    justifyContent: 'center',
+    borderRadius: 100,
+    height: 100,
+    width: 100,
+    borderColor: 'rgba(255, 255, 255, 0.7)',
+    borderWidth: 3,
+  },
+
+  btnFoto: {
+    backgroundColor: "#4B0082",
+    marginTop: 30,
+    justifyContent: 'center',
+    borderRadius: 150,
+    height: 150,
+    width: 150,
+    borderColor: 'rgba(255, 255, 255, 0.7)',
+    borderWidth: 3,
+  },
+  textPost:{
+    color: "white",
+    textAlign: 'center',
+    marginTop: 5,
+  },
+
+  imagem: {
+    flex: 1,
+    padding: 100,
+    width: 310,
+     height: 200,
+    margin:10,
+    backgroundColor: "black"
+
+  },
+
   textBotaum: {
     color: 'rgba(255, 255, 255, 0.7)',
     textAlign: 'center',
@@ -25,9 +62,7 @@ const styles2 = StyleSheet.create({
     fontSize: 20
 
   },
-  icone:{
-    
-  },
+  
   form: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -39,7 +74,7 @@ const styles2 = StyleSheet.create({
     marginTop:30,
   },
   botaumSalvar:{
-    marginTop:30,
+    marginTop:5,
   },
   inputText: {
     height: 50,
