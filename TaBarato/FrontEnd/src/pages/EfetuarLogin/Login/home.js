@@ -102,9 +102,13 @@ export default class Home extends Component {
         <Text style={styles.productTitle}>
                   <Text style={styles.textDelete}><Icon name="user" size={18} color="black" />  </Text> {item.user}
                 </Text>
-        <Image 
-          style = {styles.imgStyle}        
-        source = {{uri: 'data:imagem/jpg;base64,' + item.imagem}}/>
+        <ImageBackground
+              source = { require("/AndreViolin/meu Deus/TaBarato/TaBarato/FrontEnd/src/background/semfoto.jpg")}
+                style = {{width: 280, height:200, resizeMode: "cover"}}>
+                    <Image 
+                        style = {styles.imgStyle}        
+                   source = {{uri: 'data:imagem/jpg;base64,' + item.imagem}}/>
+                </ImageBackground>
         
                 <Text style={styles.productTitle}>
                   <Text style={styles.textDelete}><Icon name="shopping-cart" size={18} color="black" />  </Text>{item.produto}
@@ -127,11 +131,15 @@ export default class Home extends Component {
                 <Text style={styles.productTitle}>
                   <Text style={styles.textDelete}><Icon name="user" size={18} color="black" />  </Text> {item.user}
                 </Text>
-                <Image 
-                  style = {styles.imgStyle}        
-                  source = {
-                    {uri: 'data:imagem/jpg;base64,' + item.imagem}
-                  }/>
+
+                <ImageBackground
+              source = { require("/AndreViolin/meu Deus/TaBarato/TaBarato/FrontEnd/src/background/semfoto.jpg")}
+                style = {{width: 280, height:200, resizeMode: "cover"}}>
+                    <Image 
+                        style = {styles.imgStyle}        
+                   source = {{uri: 'data:imagem/jpg;base64,' + item.imagem}}/>
+                </ImageBackground>
+
                 <Text style={styles.productTitle}>
                   <Text style={styles.textDelete}><Icon name="shopping-cart" size={18} color="black" />  </Text>{item.produto}
                 </Text>
@@ -168,11 +176,13 @@ export default class Home extends Component {
           
         />
         <View style={styles.divBotoes} >
-          <TouchableOpacity style={styles.productContainer2} onPress={ ()=>{
-
-          this.props.navigation.navigate("Home", {usuario:this.props.navigation.getParam("usuario","user")})
+          <TouchableOpacity style={styles.productContainer2} onPress={ async ()=>{
           
-          }}>
+              this.setState({docs: [] })
+              this.loadProdutos()
+          }
+
+          }>
           <Text style={styles.textDelete}><Icon name="refresh" size={28} color="white" /></Text>
           <Text style={styles.textDelete}>Atualizar Página</Text>
           </TouchableOpacity>
@@ -209,10 +219,7 @@ const styles = StyleSheet.create({
   imgStyle:{
     width: 280,
     height: 200,
-    resizeMode: "cover",
-    borderColor: 'black',
-    borderWidth: 3,
-    borderRadius: 5,
+    resizeMode: "cover"
   },
   divBotoes: {
     marginTop: 10,

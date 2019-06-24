@@ -22,46 +22,28 @@ export default class CadastroProduto extends Component {
     this.props.navigation.navigate("Home");
     };
   
-  
-
   handleSubmit = async () => {
-    try{
         const response = await api.post("products", {
           produto: this.state.produto,
           valor: this.state.valor,
           local: this.state.local,
           imagem: this.state.imagem,
           user: this.props.navigation.getParam("usuario","user")
-        });
-        home.render();
-        this.props.navigation.navigate("Home");
-    }
-    catch(e){
-            try{
-            const response = await api.post("products", {
-              produto: this.state.produto,
-              valor: this.state.valor,
-              local: this.state.local,
-              user: this.recuperaUser(),
-              imagem: "coloque aqui a imagem padrão de (sem imagem)",
-            });
-            home.render();
-            this.props.navigation.navigate("Home");
-          }catch(e){
-            alert("Preencha os campos corretamente!!")
-          }
-        }
-    
-    
-
+        }); 
+         this.props.navigation.navigate("Home");   
+      
   };
 
 
   render(props) {
     console.log(this.props);
     var arquivo = this.props.navigation.getParam('Uri', 'Imagem');
-  
-    this.state.imagem = arquivo.base64;
+    if(arquivo == "Imagem"){
+      this.state.imagem = arquivo;
+    } else{
+      this.state.imagem = arquivo.base64;
+      
+    }   
 
     return (
       <ImageBackground source={background} style={ { width : '100%' , height : '100%' } }>
@@ -125,7 +107,7 @@ export default class CadastroProduto extends Component {
 
         <View style={styles.botaumSalvar} >
          <TouchableOpacity style={styles.botaumPostar}  onPress={ ()=>{
-           this.handleSubmit();}}>
+           this.handleSubmit()}}>
           <Text style={styles.textBotaum}><Icon name="paper-plane" size={50} color="white" /></Text>
           <Text style={styles.textPost}>POSTAR</Text>
          </TouchableOpacity>
