@@ -127,7 +127,7 @@ export default class Home extends Component {
       
     );
   }else{
-      return  <View style={styles.productContainer}>
+      return ( <View style={styles.productContainer}>
                 <Text style={styles.productTitle}>
                   <Text style={styles.textDelete}><Icon name="user" size={18} color="black" />  </Text> {item.user}
                 </Text>
@@ -145,7 +145,7 @@ export default class Home extends Component {
                  {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}
                  </Text>
               </View>
-    }
+      )}
   };
 
  
