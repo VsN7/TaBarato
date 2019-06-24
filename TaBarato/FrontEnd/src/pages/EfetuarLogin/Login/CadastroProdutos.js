@@ -28,15 +28,33 @@ export default class CadastroProduto extends Component {
   }
 
   handleSubmit = async () => {
-    const response = await api.post("products", {
-      produto: this.state.produto,
-      valor: this.state.valor,
-      local: this.state.local,
-      imagem: this.state.imagem,
-      user: this.recuperaUser()
-    });
-    home.render();
-    this.props.navigation.navigate("Home");
+    try{
+        const response = await api.post("products", {
+          produto: this.state.produto,
+          valor: this.state.valor,
+          local: this.state.local,
+          imagem: this.state.imagem,
+          user: this.recuperaUser()
+        });
+        home.render();
+        this.props.navigation.navigate("Home");
+    }
+    catch(e){
+            try{
+            const response = await api.post("products", {
+              produto: this.state.produto,
+              valor: this.state.valor,
+              local: this.state.local,
+              user: this.recuperaUser()
+              
+            });
+            home.render();
+            this.props.navigation.navigate("Home");
+          }catch(e){
+            alert("Preencha os campos corretamente!!")
+          }
+        }
+    
     
     
     

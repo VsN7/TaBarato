@@ -103,37 +103,45 @@ export default class Home extends Component {
             
         <Text style={styles.textDelete}><Icon name="trash" size={28} color="red" /></Text></TouchableOpacity>
          
-        <Text style={styles.productTitle}>Postado por {item.user}</Text>
+        <Text style={styles.productTitle}>
+                  <Text style={styles.textDelete}><Icon name="user" size={18} color="black" />  </Text> {item.user}
+                </Text>
         <Image 
-          style = {{
-            width: 280,
-            height: 200,
-            resizeMode: "cover"
-          }}        
+          style = {styles.imgStyle}        
         source = {{uri: 'data:imagem/jpg;base64,' + item.imagem}}/>
-        <Text style={styles.productTitle}>{item.produto}</Text>
-        <Text style={styles.productTitle}>R$ {item.valor}</Text>
-        <Text style={styles.productTitle}>{item.local}</Text>
-        <Text style={styles.productTitle}>Data da publicação: {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}</Text>
+        
+                <Text style={styles.productTitle}>
+                  <Text style={styles.textDelete}><Icon name="shopping-cart" size={18} color="black" />  </Text>{item.produto}
+                </Text>
+                <Text style={styles.productTitle}>
+                  <Text style={styles.textDelete}><Icon name="dollar" size={18} color="black" />  </Text>{item.valor}
+                </Text>
+                <Text style={styles.productTitle}>
+                  <Text style={styles.textDelete}><Icon name="map-marker" size={18} color="black" />  </Text> {item.local}
+                </Text>
+                <Text style={styles.productTitle}>
+                <Text style={styles.textDelete}><Icon name="calendar" size={18} color="black" />  </Text>
+                 {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}
+                 </Text>
       </View>
       
     );
   }else{
       return  <View style={styles.productContainer}>
                 <Text style={styles.productTitle}>
-                  <Text style={styles.textDelete}><Icon name="user" size={18} color="white" />  </Text> {item.user}
+                  <Text style={styles.textDelete}><Icon name="user" size={18} color="black" />  </Text> {item.user}
                 </Text>
                 <Text style={styles.productTitle}>
-                  <Text style={styles.textDelete}><Icon name="shopping-cart" size={18} color="white" />  </Text>{item.produto}
+                  <Text style={styles.textDelete}><Icon name="shopping-cart" size={18} color="black" />  </Text>{item.produto}
                 </Text>
                 <Text style={styles.productTitle}>
-                  <Text style={styles.textDelete}><Icon name="dollar" size={18} color="white" />  </Text>{item.valor}
+                  <Text style={styles.textDelete}><Icon name="dollar" size={18} color="black" />  </Text>{item.valor}
                 </Text>
                 <Text style={styles.productTitle}>
-                  <Text style={styles.textDelete}><Icon name="map-marker" size={18} color="white" />  </Text> {item.local}
+                  <Text style={styles.textDelete}><Icon name="map-marker" size={18} color="black" />  </Text> {item.local}
                 </Text>
                 <Text style={styles.productTitle}>
-                <Text style={styles.textDelete}><Icon name="calendar" size={18} color="white" />  </Text>
+                <Text style={styles.textDelete}><Icon name="calendar" size={18} color="black" />  </Text>
                  {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}
                  </Text>
               </View>
@@ -160,6 +168,10 @@ export default class Home extends Component {
         />
         <View style={styles.divBotoes} >
           <TouchableOpacity style={styles.productContainer2} onPress={ ()=>{
+
+          
+          this.setState({docs: [] })
+          this.loadProdutos()  
 
           this.props.navigation.navigate("Home", {usuario:this.recuperaUser()})
           
@@ -196,6 +208,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     
   },
+
+  imgStyle:{
+    width: 280,
+    height: 200,
+    resizeMode: "cover",
+    borderColor: 'black',
+    borderWidth: 3,
+    borderRadius: 5,
+  },
   divBotoes: {
     marginTop: 10,
     flexDirection: "row"
@@ -205,13 +226,13 @@ const styles = StyleSheet.create({
   },
   productContainer: {
     padding: 10,
-    height: 180,
-    width: 300,
+    height: 380,
+    width: 310,
     fontSize: 16,
-    backgroundColor: "rgba(255, 255, 255, 0.3)",
+    backgroundColor: "rgba(255, 255, 255,0.8)",
     borderColor: 'rgba(255, 255, 255, 0.7)',
     borderWidth: 3,
-    borderRadius: 25,
+    borderRadius: 10,
     marginBottom: 25,
     
   },
@@ -241,7 +262,7 @@ const styles = StyleSheet.create({
   },
 
   buttonExcluir:{
-    backgroundColor: "white",
+    backgroundColor: "rgba(255, 255, 255,0)",
     marginLeft: "94%"
   },
   textDelete:{
