@@ -33,11 +33,7 @@ export default class Home extends Component {
     this.loadProdutos();
   }
 
-  recuperaUser = () =>{
-    const user = this.props.navigation.getParam("usuario","user");
-    return user;
-  }
-
+  
   
    loadProdutos = async (page = 1) => {
     try {
@@ -68,7 +64,7 @@ export default class Home extends Component {
 
   renderItem = ({ item }) => {
     Moment.locale('en');
-    if(this.recuperaUser()==item.user){
+    if(this.props.navigation.getParam("usuario","user") ==item.user){
     return (
      
       <View style={styles.productContainer}>
@@ -161,7 +157,7 @@ export default class Home extends Component {
         <View style={styles.divBotoes} >
           <TouchableOpacity style={styles.productContainer2} onPress={ ()=>{
 
-          this.props.navigation.navigate("Home", {usuario:this.recuperaUser()})
+          this.props.navigation.navigate("Home", {usuario:this.props.navigation.getParam("usuario","user")})
           
           }}>
           <Text style={styles.textDelete}><Icon name="home" size={28} color="white" /></Text>
@@ -170,7 +166,7 @@ export default class Home extends Component {
 
           <TouchableOpacity style={styles.productContainer2} onPress={ ()=>{
            
-           this.props.navigation.navigate("CadastroProdutos", {usuario:this.recuperaUser()})
+           this.props.navigation.navigate("CadastroProdutos", {usuario:this.props.navigation.getParam("usuario","user")})
 
           }}>
           <Text style={styles.textDelete}><Icon name="paper-plane" size={28} color="white" /></Text>
