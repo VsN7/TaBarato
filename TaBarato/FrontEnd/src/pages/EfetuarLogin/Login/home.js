@@ -173,8 +173,8 @@ export default class Home extends Component {
           this.props.navigation.navigate("Home", {usuario:this.props.navigation.getParam("usuario","user")})
           
           }}>
-          <Text style={styles.textDelete}><Icon name="home" size={28} color="white" /></Text>
-          <Text style={styles.textDelete}>Home</Text>
+          <Text style={styles.textDelete}><Icon name="refresh" size={28} color="white" /></Text>
+          <Text style={styles.textDelete}>Atualizar Página</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.productContainer2} onPress={ ()=>{
@@ -222,11 +222,14 @@ const styles = StyleSheet.create({
     padding: 20
   },
   productContainer: {
+    justifyContent: "center",
     padding: 10,
     height: 380,
     width: 310,
     fontSize: 16,
-    backgroundColor: "rgba(255, 255, 255,0.8)",
+
+    backgroundColor: "rgba(255, 255, 255,0.3)",
+
     borderColor: 'rgba(255, 255, 255, 0.7)',
     borderWidth: 3,
     borderRadius: 10,
@@ -238,13 +241,13 @@ const styles = StyleSheet.create({
     
     
     width: 120,
-    marginLeft: 28,
-    marginRight: 35,
+    marginLeft: 32,
+    marginRight: 32,
     borderRadius: 20,
-    padding: 10,
-    marginBottom: 10,
-    borderColor: "white",
-    borderWidth: 3,
+    padding: 5,
+    marginBottom: 3,
+   
+    
     shadowColor: "#000",
     shadowOffset: { width: 30, height: 5 },
     shadowOpacity: 0.4,
@@ -259,7 +262,7 @@ const styles = StyleSheet.create({
   },
 
   buttonExcluir:{
-    backgroundColor: "rgba(255, 255, 255,0)",
+
     marginLeft: "94%"
   },
   textDelete:{
