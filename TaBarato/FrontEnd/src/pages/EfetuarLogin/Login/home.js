@@ -131,6 +131,11 @@ export default class Home extends Component {
                 <Text style={styles.productTitle}>
                   <Text style={styles.textDelete}><Icon name="user" size={18} color="black" />  </Text> {item.user}
                 </Text>
+                <Image 
+                  style = {styles.imgStyle}        
+                  source = {
+                    {uri: 'data:imagem/jpg;base64,' + item.imagem}
+                  }/>
                 <Text style={styles.productTitle}>
                   <Text style={styles.textDelete}><Icon name="shopping-cart" size={18} color="black" />  </Text>{item.produto}
                 </Text>
