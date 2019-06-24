@@ -45,8 +45,8 @@ export default class CadastroProduto extends Component {
               produto: this.state.produto,
               valor: this.state.valor,
               local: this.state.local,
-              user: this.recuperaUser()
-              
+              user: this.recuperaUser(),
+              imagem: "coloque aqui a imagem padrão de (sem imagem)",
             });
             home.render();
             this.props.navigation.navigate("Home");
