@@ -5,15 +5,14 @@ const requireDir = require('require-dir');
 
 // Iniciando o App
 const app = express();
-//app.use(express.json());
-//app.use(cors()) 
+
 app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 mongoose
   .connect(
-       process.env.MONGO_URL, //variavel de ambiente
-    //'mongodb+srv://vitor:533596vsn@cluster0-mmqlk.mongodb.net/test?retryWrites=true&w=majority',
-    // 'mongodb+srv://<USUARIO>:<SENHA>@cluster0-plxve.mongodb.net/node-api?retryWrites=true',
+    'mongodb+srv://Wilson:152029@cluster0-fddx8.mongodb.net/node-api?retryWrites=true',
+      // process.env.MONGO_URL, //variavel de ambiente
     {
       useNewUrlParser: true
     })
