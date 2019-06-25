@@ -12,7 +12,6 @@ import Camera from "./camera/camera"
 import Login from "./pages/EfetuarLogin/Login/login"
 import CadastroProdutos from "./pages/EfetuarLogin/Login/CadastroProdutos"
 import Home from "./pages/EfetuarLogin/Login/home"
-import RotasHomeProduto from "./pages/EfetuarLogin/Login/routes"
 
 
 const defaultStyle = title => {

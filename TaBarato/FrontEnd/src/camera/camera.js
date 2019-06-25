@@ -3,6 +3,9 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import { RNCamera } from "react-native-camera";
 
+
+import Icon from "react-native-vector-icons/FontAwesome";//FontAwesome
+
 export default class App extends Component {
 
   takePicture = async () => {
@@ -15,9 +18,16 @@ export default class App extends Component {
     }
   };
 
+  voltar = () => {
+    this.props.navigation.navigate("CadastroProdutos")
+    };
+
   render() {
     return (
       <View style={styles.container}>
+        <TouchableOpacity  onPress={this.voltar}>
+          <Text><Icon name="chevron-circle-left"   size={35} color={'rgba(255, 255, 255, 0.7)'} ></Icon></Text>   
+        </TouchableOpacity>
         <RNCamera
           ref={camera => {
             this.camera = camera;
