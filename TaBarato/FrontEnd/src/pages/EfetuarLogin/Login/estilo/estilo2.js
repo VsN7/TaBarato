@@ -27,6 +27,8 @@ const styles2 = StyleSheet.create({
     width: 100,
     borderColor: 'rgba(255, 255, 255, 0.7)',
     borderWidth: 3,
+
+    
   },
 
   btnFoto: {

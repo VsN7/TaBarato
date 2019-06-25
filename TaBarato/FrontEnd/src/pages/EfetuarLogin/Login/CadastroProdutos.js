@@ -6,7 +6,7 @@ import styles from "./estilo/estilo2";
 import Home from "./home";
 
 import Icon from "react-native-vector-icons/FontAwesome";//FontAwesome
-import background from '../../../background/6.jpg';
+import background from '../../../background/home81.jpg';
 
 const home = new Home();
 export default class CadastroProduto extends Component {
@@ -22,28 +22,51 @@ export default class CadastroProduto extends Component {
     this.props.navigation.navigate("Home");
     };
   
+  recuperaUser = () =>{
+    const user = this.props.navigation.getParam("usuario","user");
+    return user;
+  }
+
   handleSubmit = async () => {
+    try{
         const response = await api.post("products", {
           produto: this.state.produto,
           valor: this.state.valor,
           local: this.state.local,
           imagem: this.state.imagem,
-          user: this.props.navigation.getParam("usuario","user")
-        }); 
-         this.props.navigation.navigate("Home");   
-      
+          user: this.recuperaUser()
+        });
+        home.render();
+        this.props.navigation.navigate("Home");
+    }
+    catch(e){
+            try{
+            const response = await api.post("products", {
+              produto: this.state.produto,
+              valor: this.state.valor,
+              local: this.state.local,
+              user: this.recuperaUser(),
+              imagem: "coloque aqui a imagem padrão de (sem imagem)",
+            });
+            home.render();
+            this.props.navigation.navigate("Home");
+          }catch(e){
+            alert("Preencha os campos corretamente!!")
+          }
+        }
+    
+    
+    
+    
+
   };
 
 
   render(props) {
     console.log(this.props);
     var arquivo = this.props.navigation.getParam('Uri', 'Imagem');
-    if(arquivo == "Imagem"){
-      this.state.imagem = arquivo;
-    } else{
-      this.state.imagem = arquivo.base64;
-      
-    }   
+  
+    this.state.imagem = arquivo.base64;
 
     return (
       <ImageBackground source={background} style={ { width : '100%' , height : '100%' } }>
@@ -107,7 +130,7 @@ export default class CadastroProduto extends Component {
 
         <View style={styles.botaumSalvar} >
          <TouchableOpacity style={styles.botaumPostar}  onPress={ ()=>{
-           this.handleSubmit()}}>
+           this.handleSubmit();}}>
           <Text style={styles.textBotaum}><Icon name="paper-plane" size={50} color="white" /></Text>
           <Text style={styles.textPost}>POSTAR</Text>
          </TouchableOpacity>

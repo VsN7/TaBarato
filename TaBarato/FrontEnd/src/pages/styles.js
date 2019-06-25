@@ -10,14 +10,20 @@ const styles = StyleSheet.create({
  
 
   viewLogo:{
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
     textAlign: 'center',
     justifyContent: 'center',
     
     
     borderRadius: 150,
-    height: 250,
-    width: 250,
+    padding: 17,
+    height: 280,
+    width: 280,
+    shadowColor: "#000",
+    shadowOffset: { width: 30, height: 5 },
+    shadowOpacity: 0.4,
+    shadowRadius: 15,
+    elevation: 2
 
   },
   botaum: {

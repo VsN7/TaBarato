@@ -8,7 +8,7 @@ import {
   
 } from "react-native";
 import styles from "./styles";
-import background from '../background/6.jpg';
+import background from '../background/home81.jpg';
 import logo from  '../background/logo3.png';
 export default class Home extends Component {
   render() {

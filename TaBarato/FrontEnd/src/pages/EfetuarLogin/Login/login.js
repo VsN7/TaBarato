@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity, TextInput, ImageBackground } from "react-
 import api from "../../../services/api";
 import styles from "./estilo/estilo2";
 import Icon from "react-native-vector-icons/FontAwesome";//FontAwesome
-import background from '../../../background/6.jpg';
+import background from '../../../background/home81.jpg';
 
 export default class CadastroProduto extends Component {
     state = {
@@ -72,7 +72,7 @@ export default class CadastroProduto extends Component {
 
       <View style={styles.form}>
         <View style={styles.incone}>
-           <Text><Icon  name="id-card"   size={150} color="'rgb(75,30,130)'"/></Text>
+           <Text><Icon  name="id-card"   size={150} color="#6A5ACD"/></Text>
         </View>
         <View style={styles.inputConteiner}>
         <Icon name="user"   size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon}/>

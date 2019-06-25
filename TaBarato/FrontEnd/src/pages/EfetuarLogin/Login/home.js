@@ -12,8 +12,10 @@ import {
 import Moment from 'moment';
 import api from "../../../services/api"; 
 import Icon from "react-native-vector-icons/FontAwesome";//FontAwesome
-import background from '../../../background/6.jpg';
+import background from '../../../background/home81.jpg';
+import semFoto from "../../../background/semfoto.jpg";
 
+import styles from "./estilo/styleHome";
 
 const path = "/products";
 export default class Home extends Component {
@@ -66,9 +68,11 @@ export default class Home extends Component {
     Moment.locale('en');
     if(this.props.navigation.getParam("usuario","user") ==item.user){
     return (
-     
+      
+      
       <View style={styles.productContainer}>
-       
+      
+       <View >
        <TouchableOpacity style={styles.buttonExcluir} onPress={
           
           excluirI = async (id) => {
@@ -97,49 +101,29 @@ export default class Home extends Component {
 
           }>
             
-        <Text style={styles.textDelete}><Icon name="trash" size={28} color="red" /></Text></TouchableOpacity>
-         
-        <Text style={styles.productTitle}>
-                  <Text style={styles.textDelete}><Icon name="user" size={18} color="black" />  </Text> {item.user}
+        <Text style={styles.textDelete}>
+          <Icon name="times-circle" size={28} color="red" />
+        </Text>
+        </TouchableOpacity>
+        </View>  
+
+
+              <View style={styles.inputText}>
+               <Text style={styles.textReturn}>
+                  <Text style={styles.textDelete}><Icon name="user" size={28} color="black" />  </Text> {item.user}
                 </Text>
-        <ImageBackground
-              source = { require("/AndreViolin/meu Deus/TaBarato/TaBarato/FrontEnd/src/background/semfoto.jpg")}
-                style = {{width: 280, height:200, resizeMode: "cover"}}>
-                    <Image 
-                        style = {styles.imgStyle}        
+              </View>
+
+              <View style={styles.viewFoto} >
+                <ImageBackground  style = {styles.imgStyle}
+                 source={semFoto} style={ { width : 264, height : 244} }>
+                    <Image style = {styles.imgStyle}
+                               
                    source = {{uri: 'data:imagem/jpg;base64,' + item.imagem}}/>
                 </ImageBackground>
-        
-                <Text style={styles.productTitle}>
-                  <Text style={styles.textDelete}><Icon name="shopping-cart" size={18} color="black" />  </Text>{item.produto}
-                </Text>
-                <Text style={styles.productTitle}>
-                  <Text style={styles.textDelete}><Icon name="dollar" size={18} color="black" />  </Text>{item.valor}
-                </Text>
-                <Text style={styles.productTitle}>
-                  <Text style={styles.textDelete}><Icon name="map-marker" size={18} color="black" />  </Text> {item.local}
-                </Text>
-                <Text style={styles.productTitle}>
-                <Text style={styles.textDelete}><Icon name="calendar" size={18} color="black" />  </Text>
-                 {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}
-                 </Text>
-      </View>
-      
-    );
-  }else{
-      return ( <View style={styles.productContainer}>
-                <Text style={styles.productTitle}>
-                  <Text style={styles.textDelete}><Icon name="user" size={18} color="black" />  </Text> {item.user}
-                </Text>
+              </View>
 
-                <ImageBackground
-              source = { require("/AndreViolin/meu Deus/TaBarato/TaBarato/FrontEnd/src/background/semfoto.jpg")}
-                style = {{width: 280, height:200, resizeMode: "cover"}}>
-                    <Image 
-                        style = {styles.imgStyle}        
-                   source = {{uri: 'data:imagem/jpg;base64,' + item.imagem}}/>
-                </ImageBackground>
-
+              <View style={styles.inputText2}>
                 <Text style={styles.productTitle}>
                   <Text style={styles.textDelete}><Icon name="shopping-cart" size={18} color="black" />  </Text>{item.produto}
                 </Text>
@@ -154,6 +138,44 @@ export default class Home extends Component {
                  {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}
                  </Text>
               </View>
+      </View>
+      
+    );
+  }else{
+      return ( 
+      
+          <View style={styles.productContainer3}>
+
+                <View style={styles.inputText}>
+                <Text style={styles.productTitle}>
+                  <Text style={styles.textDelete}><Icon name="user" size={18} color="black" />  </Text> {item.user}
+                </Text>
+                </View>
+                <View style={styles.viewFoto} >
+                <ImageBackground  style = {styles.imgStyle}
+                 source={semFoto} style={ { width : 264, height : 244} }>
+                    <Image style = {styles.imgStyle}
+                               
+                   source = {{uri: 'data:imagem/jpg;base64,' + item.imagem}}/>
+                </ImageBackground>
+              </View>
+
+              <View style={styles.inputText2}>
+                <Text style={styles.productTitle}>
+                  <Text style={styles.textDelete}><Icon name="shopping-cart" size={18} color="black" />  </Text>{item.produto}
+                </Text>
+                <Text style={styles.productTitle}>
+                  <Text style={styles.textDelete}><Icon name="dollar" size={18} color="black" />  </Text>{item.valor}
+                </Text>
+                <Text style={styles.productTitle}>
+                  <Text style={styles.textDelete}><Icon name="map-marker" size={18} color="black" />  </Text> {item.local}
+                </Text>
+                <Text style={styles.productTitle}>
+                <Text style={styles.textDelete}><Icon name="calendar" size={18} color="black" />  </Text>
+                 {Moment(item.data).format('D'+' / '+ 'MMM'+' / '+ 'YYYY')}
+                 </Text>
+              </View>
+            </View>
       )}
   };
 
@@ -162,6 +184,7 @@ export default class Home extends Component {
   render() {
     return (
       <ImageBackground source={background} style={ { width : '100%' , height : '100%' } }>
+        
        <View style={styles.container}>
        
         <FlatList
@@ -175,8 +198,9 @@ export default class Home extends Component {
           onEndReachedThreshold={0.1}
           
         />
+        
         <View style={styles.divBotoes} >
-          <TouchableOpacity style={styles.productContainer2} onPress={ async ()=>{
+          <TouchableOpacity style={styles.botoesInferiores} onPress={ async ()=>{
           
               this.setState({docs: [] })
               this.loadProdutos()
@@ -187,7 +211,7 @@ export default class Home extends Component {
           <Text style={styles.textDelete}>Atualizar Página</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.productContainer2} onPress={ ()=>{
+          <TouchableOpacity style={styles.botoesInferiores} onPress={ ()=>{
            
            this.props.navigation.navigate("CadastroProdutos", {usuario:this.props.navigation.getParam("usuario","user")})
 
@@ -207,101 +231,3 @@ export default class Home extends Component {
 
 
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    
-  },
-
-  imgStyle:{
-    width: 280,
-    height: 200,
-    resizeMode: "cover"
-  },
-  divBotoes: {
-    marginTop: 10,
-    flexDirection: "row"
-  },
-  list: {
-    padding: 20
-  },
-  productContainer: {
-    justifyContent: "center",
-    padding: 10,
-    height: 380,
-    width: 310,
-    fontSize: 16,
-
-    backgroundColor: "rgba(255, 255, 255,0.3)",
-
-    borderColor: 'rgba(255, 255, 255, 0.7)',
-    borderWidth: 3,
-    borderRadius: 10,
-    marginBottom: 25,
-    
-  },
-
-  productContainer2: {
-    
-    
-    width: 120,
-    marginLeft: 32,
-    marginRight: 32,
-    borderRadius: 20,
-    padding: 5,
-    marginBottom: 3,
-   
-    
-    shadowColor: "#000",
-    shadowOffset: { width: 30, height: 5 },
-    shadowOpacity: 0.4,
-    shadowRadius: 5,
-    elevation: 2
-  },
-
-  productTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#333"
-  },
-
-  buttonExcluir:{
-
-    marginLeft: "94%"
-  },
-  textDelete:{
-    color: "#fff",
-    textAlign: 'center'
-  },
-  add:{
-    color: "#0000CD",
-    textAlign: 'center'
-  },
-  productDescription: {
-    fontSize: 16,
-    color: "#999",
-    marginTop: 5,
-    lineHeight: 24
-  },
-  productButton: {
-    height: 42,
-    borderRadius: 5,
-    backgroundColor: "#ddd",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 15,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.4,
-    shadowRadius: 5,
-    elevation: 1
-  },
-  productButtonText: {
-    fontSize: 16,
-    color: "#333",
-    fontWeight: "bold"
-  }
-});
