@@ -36,3 +36,6 @@ Esse App foi desenvolvido para aparelhos com sistema operacional android e foi u
 #### Clique na imagem abaixo para acessar ao video de funcionamento do projeto
 
 [![tabarato video](https://uploaddeimagens.com.br/images/002/184/670/original/tabarato.PNG?1562794194)](https://www.youtube.com/watch?v=RqMlbvXaBx8)
+
+### Clique no link abaixo para fazer o download do App.
+https://vitorportifolio.herokuapp.com/app/tabarato.apk
