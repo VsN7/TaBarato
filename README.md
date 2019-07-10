@@ -1,6 +1,6 @@
 # TaBarato
 
-.![TaBarato](https://uploaddeimagens.com.br/images/002/183/811/original/WhatsApp_Image_2019-07-10_at_13.30.07.jpeg?1562776700)
+.![TaBarato](https://uploaddeimagens.com.br/images/002/184/679/original/tabaratooo.jpg?1562794512)
 
 ## Descrição do projeto
 
